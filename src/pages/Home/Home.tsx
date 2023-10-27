@@ -1,4 +1,5 @@
 import { useFetch } from "../../utils/hooks/useFetch";
+import { PageWrapper } from "../../utils/style/Layout";
 
 function Home() {
   const { data, isLoading, error } = useFetch(
@@ -7,10 +8,15 @@ function Home() {
   const dayImage: any = data;
 
   console.log(dayImage);
+
   return (
-    <div className="Home">
-      <img src={dayImage.url} />
-    </div>
+    <PageWrapper>
+      <img src={dayImage.url} alt="image of the day" />
+      <h2>
+        Image of the day : {dayImage.date} by {dayImage.copyright}
+      </h2>
+      <p>{dayImage.explanation}</p>
+    </PageWrapper>
   );
 }
 
