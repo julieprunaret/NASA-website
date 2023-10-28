@@ -1,3 +1,4 @@
+import Image from "../../components/image/Image";
 import { useFetch } from "../../utils/hooks/useFetch";
 import { PageWrapper } from "../../utils/style/Layout";
 
@@ -11,7 +12,11 @@ function Home() {
 
   return (
     <PageWrapper>
-      <img src={dayImage.url} alt="image of the day" />
+      <Image
+        url={dayImage.url}
+        alt={`image de ${dayImage.copyright}`}
+        size="image-l"
+      />
       <h2>
         Image of the day : {dayImage.date} by {dayImage.copyright}
       </h2>
