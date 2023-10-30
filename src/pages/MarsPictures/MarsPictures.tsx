@@ -22,41 +22,49 @@ function MarsPictures() {
   const marsPics: any = data;
 
   return (
-    <PageWrapper>
+    <PageWrapper className="mars-pictures_container">
       {isLoading ? (
         <LoaderWrapper>
           <Loader />
           <p>Atterissage imminent</p>
         </LoaderWrapper>
       ) : (
-        marsPics.photos &&
-        marsPics.photos.slice(0, 10).map((marsPic: any) => (
-          <div key={marsPic.id}>
-            <Image
-              url={marsPic.img_src}
-              alt={`image de ${marsPic.earth_date}`}
-              size="image-s"
-            />
-            <button
-              onClick={() =>
-                setPicture({
-                  id: marsPic.id,
-                  img_src: marsPic.img_src,
-                  earth_date: marsPic.earth_date,
-                })
-              }
-            >
-              voir l'image
-            </button>
-          </div>
-        ))
+        <ul>
+          {marsPics.photos &&
+            marsPics.photos.slice(0, 16).map((marsPic: any) => (
+              <li
+                key={marsPic.id}
+                onClick={() =>
+                  setPicture({
+                    id: marsPic.id,
+                    img_src: marsPic.img_src,
+                    earth_date: marsPic.earth_date,
+                  })
+                }
+                title="Voir l'image"
+                className={`mars-pictures_listItems ${
+                  picture.id === marsPic.id && "-selected"
+                }`}
+              >
+                <Image
+                  url={marsPic.img_src}
+                  alt={`image de ${marsPic.earth_date}`}
+                  size="image-s -square"
+                />
+              </li>
+            ))}
+        </ul>
       )}
+
       {picture.id ? (
-        <Image
-          url={picture.img_src}
-          alt={`image de ${picture.earth_date}`}
-          size="image-m"
-        />
+        <div>
+          <h2>{picture.earth_date}</h2>
+          <Image
+            url={picture.img_src}
+            alt={`image de ${picture.earth_date}`}
+            size="mars-pictures_image"
+          />
+        </div>
       ) : (
         <p>plop</p>
       )}

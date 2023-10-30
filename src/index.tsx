@@ -9,7 +9,6 @@ import background from "./assets/bg.png";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ImageOfTheDay from "./pages/ImageOfTheDay/ImageOfTheDay";
 import MarsPictures from "./pages/MarsPictures/MarsPictures";
-import MarsDetail from "./pages/MarsPictures/MarsDetail";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
