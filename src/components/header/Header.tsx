@@ -1,16 +1,19 @@
 import Image from "../image/Image";
 import logo from "../../assets/logo.png";
 import "./header.scss";
-import Button from "../Button/Button";
+import LinkCustom from "../Link/Link";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header className="header-container">
-      <Image url={logo as string} alt="logo" size="image-m" />
+      <Link to="./" title="to home">
+        <Image url={logo as string} alt="logo" size="image-m" />
+      </Link>
 
       <div>
-        <Button label="Planètes" />
-        <Button label="Image du jour" />
+        <LinkCustom label="Planètes" path="/planete" />
+        <LinkCustom label="Image du jour" path="/image-of-the-day" />
       </div>
     </header>
   );
