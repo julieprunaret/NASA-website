@@ -1,21 +1,17 @@
 import Image from "../image/Image";
-type Props = {
-  logo: string;
-};
+import logo from "../../assets/logo.png";
+import "./header.scss";
+import Button from "../Button/Button";
 
-function Header({ logo }: Props) {
+function Header() {
   return (
-    <header>
-      <p>Nasa</p>
-      {/* <svg
-        xmlns="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg"
-        width="48"
-        height="48"
-        fill={fillColor}
-        // class="bi bi-google"
-        viewBox="0 0 16 16"
-      /> */}
-      <Image url={logo} alt="logo" size="image-s" />
+    <header className="header-container">
+      <Image url={logo as string} alt="logo" size="image-m" />
+
+      <div>
+        <Button label="Planètes" />
+        <Button label="Image du jour" />
+      </div>
     </header>
   );
 }
