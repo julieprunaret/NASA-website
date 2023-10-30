@@ -7926,6 +7926,11 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-time-format@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-time-format/-/react-time-format-0.0.5.tgz#d9c967ec68c9a262fc37c3dd3a381da5bde08e83"
+  integrity sha512-k/hB2zAa2c5Int7HqUSunmEE5XMtGoYjQtPCg9aMRH+ufpMkBBJ1jMA+hAe5Y7RVkKBLYPGX3YJrsgfjACA4nw==
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"

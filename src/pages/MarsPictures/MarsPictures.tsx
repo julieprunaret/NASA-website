@@ -1,9 +1,9 @@
-import LinkCustom from "../../components/Link/Link";
 import Image from "../../components/image/Image";
 import { useFetch } from "../../utils/hooks/useFetch";
 import { Loader, LoaderWrapper, PageWrapper } from "../../utils/style/Layout";
 import "./marsPictures.scss";
 import { useState, useEffect } from "react";
+import Time from "react-time-format";
 
 function MarsPictures() {
   const [picture, setPicture] = useState<IPicture>({
@@ -58,7 +58,9 @@ function MarsPictures() {
 
       {picture.id ? (
         <div>
-          <h2>{picture.earth_date}</h2>
+          <h2>
+            <Time value={picture.earth_date} format="DD/MM/YYYY" />
+          </h2>
           <Image
             url={picture.img_src}
             alt={`image de ${picture.earth_date}`}

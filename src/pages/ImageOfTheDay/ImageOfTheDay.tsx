@@ -2,6 +2,7 @@ import Image from "../../components/image/Image";
 import { useFetch } from "../../utils/hooks/useFetch";
 import { Loader, LoaderWrapper, PageWrapper } from "../../utils/style/Layout";
 import "./ImageOfTheDay.scss";
+import Time from "react-time-format";
 
 function ImageOfTheDay() {
   const { data, isLoading, error } = useFetch(
@@ -27,7 +28,9 @@ function ImageOfTheDay() {
           />
           <div>
             <h2>
-              Image of the day : {dayImage.date} by {dayImage.copyright}
+              Image of the day{" "}
+              <Time value={dayImage.date} format="DD/MM/YYYY" /> by{" "}
+              {dayImage.copyright}
             </h2>
             <p>{dayImage.explanation}</p>
           </div>

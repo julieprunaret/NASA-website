@@ -12,3 +12,5 @@ interface IPicture {
   img_src: string;
   earth_date: string;
 }
+
+declare module "react-time-format";
