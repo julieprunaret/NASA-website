@@ -1,3 +1,12 @@
+
+![Screenshot 2023-10-30 at 19-29-36 React App](https://github.com/julieprunaret/nasa-website/assets/87066549/80338123-cd4c-4ff7-a133-6a292e809b53)
+![Screenshot 2023-10-30 at 19-29-44 React App](https://github.com/julieprunaret/nasa-website/assets/87066549/3bbabef6-45e4-4071-997d-586a06ddad52)
+
+## The API by NASA
+
+[## Available Scripts
+](https://api.nasa.gov/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
