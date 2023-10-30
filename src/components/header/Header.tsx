@@ -12,7 +12,7 @@ function Header() {
       </Link>
 
       <div>
-        <LinkCustom label="Planètes" path="/planete" />
+        <LinkCustom label="Photos marsiennes" path="/weather-on-mars" />
         <LinkCustom label="Image du jour" path="/image-of-the-day" />
       </div>
     </header>

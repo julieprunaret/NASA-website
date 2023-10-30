@@ -1,6 +1,6 @@
 import Image from "../../components/image/Image";
 import { useFetch } from "../../utils/hooks/useFetch";
-import { PageWrapper } from "../../utils/style/Layout";
+import { Loader, LoaderWrapper, PageWrapper } from "../../utils/style/Layout";
 import "./ImageOfTheDay.scss";
 
 function ImageOfTheDay() {
@@ -13,15 +13,26 @@ function ImageOfTheDay() {
 
   return (
     <PageWrapper>
-      <Image
-        url={dayImage.url}
-        alt={`image de ${dayImage.copyright}`}
-        size="image-l"
-      />
-      <h2>
-        Image of the day : {dayImage.date} by {dayImage.copyright}
-      </h2>
-      <p>{dayImage.explanation}</p>
+      {isLoading ? (
+        <LoaderWrapper>
+          <Loader />
+          <p>Atterissage imminent</p>
+        </LoaderWrapper>
+      ) : (
+        <div className="image-of-the-day_container">
+          <Image
+            url={dayImage.url}
+            alt={`image de ${dayImage.copyright}`}
+            size="image-l"
+          />
+          <div>
+            <h2>
+              Image of the day : {dayImage.date} by {dayImage.copyright}
+            </h2>
+            <p>{dayImage.explanation}</p>
+          </div>
+        </div>
+      )}
     </PageWrapper>
   );
 }

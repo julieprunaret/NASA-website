@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
-const StyledGlobalStyle = createGlobalStyle``;
+const StyledGlobalStyle = createGlobalStyle`
+`;
 
 function GlobalStyle() {
   return <StyledGlobalStyle />;

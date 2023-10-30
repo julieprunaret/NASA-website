@@ -8,6 +8,7 @@ import Image from "./components/image/Image";
 import background from "./assets/bg.png";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ImageOfTheDay from "./pages/ImageOfTheDay/ImageOfTheDay";
+import MarsPictures from "./pages/MarsPictures/MarsPictures";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -22,6 +23,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/image-of-the-day" element={<ImageOfTheDay />} />
+        <Route path="/weather-on-mars" element={<MarsPictures />} />
       </Routes>
     </Router>
   </React.StrictMode>
