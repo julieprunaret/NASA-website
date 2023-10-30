@@ -1,28 +1,65 @@
+import LinkCustom from "../../components/Link/Link";
 import Image from "../../components/image/Image";
 import { useFetch } from "../../utils/hooks/useFetch";
-import { PageWrapper } from "../../utils/style/Layout";
+import { Loader, LoaderWrapper, PageWrapper } from "../../utils/style/Layout";
 import "./marsPictures.scss";
+import { useState, useEffect } from "react";
 
 function MarsPictures() {
-  const { data, isLoading, error } = useFetch(
-    `https://api.nasa.gov/insight_weather/?api_key=vciOjhLYjZK99S51sNTtGgc7RL1sRngwn65IGKUo&feedtype=json&ver=1.0`
-  );
-  const marsDatas: any = data;
+  const [picture, setPicture] = useState<IPicture>({
+    id: "",
+    img_src: "",
+    earth_date: "",
+  });
 
-  console.log(marsDatas.validity_checks);
+  useEffect(() => {
+    console.log(picture);
+  }, [setPicture, picture]);
+
+  const { data, isLoading, error } = useFetch(
+    `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=vciOjhLYjZK99S51sNTtGgc7RL1sRngwn65IGKUo&feed`
+  );
+  const marsPics: any = data;
 
   return (
     <PageWrapper>
-      {/* <Image
-        url={dayImage.url}
-        alt={`image de ${dayImage.copyright}`}
-        size="image-l"
-      />
-      <h2>
-        Image of the day : {dayImage.date} by {dayImage.copyright}
-      </h2>
-      <p>{dayImage.explanation}</p> */}
-      {/* <p>atmospheric temperature : {marsDatas.validity_checks}</p> */}
+      {isLoading ? (
+        <LoaderWrapper>
+          <Loader />
+          <p>Atterissage imminent</p>
+        </LoaderWrapper>
+      ) : (
+        marsPics.photos &&
+        marsPics.photos.slice(0, 10).map((marsPic: any) => (
+          <div key={marsPic.id}>
+            <Image
+              url={marsPic.img_src}
+              alt={`image de ${marsPic.earth_date}`}
+              size="image-s"
+            />
+            <button
+              onClick={() =>
+                setPicture({
+                  id: marsPic.id,
+                  img_src: marsPic.img_src,
+                  earth_date: marsPic.earth_date,
+                })
+              }
+            >
+              voir l'image
+            </button>
+          </div>
+        ))
+      )}
+      {picture.id ? (
+        <Image
+          url={picture.img_src}
+          alt={`image de ${picture.earth_date}`}
+          size="image-m"
+        />
+      ) : (
+        <p>plop</p>
+      )}
     </PageWrapper>
   );
 }

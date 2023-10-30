@@ -6,3 +6,9 @@ declare module "*.png" {
   export = value;
 }
 declare module "*.svg";
+
+interface IPicture {
+  id: string;
+  img_src: string;
+  earth_date: string;
+}
