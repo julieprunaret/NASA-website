@@ -12,10 +12,6 @@ function MarsPictures() {
     earth_date: "",
   });
 
-  useEffect(() => {
-    console.log(picture);
-  }, [setPicture, picture]);
-
   const { data, isLoading, error } = useFetch(
     `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=vciOjhLYjZK99S51sNTtGgc7RL1sRngwn65IGKUo&feed`
   );
@@ -29,46 +25,52 @@ function MarsPictures() {
           <p>Atterissage imminent</p>
         </LoaderWrapper>
       ) : (
-        <ul>
-          {marsPics.photos &&
-            marsPics.photos.slice(0, 16).map((marsPic: any) => (
-              <li
-                key={marsPic.id}
-                onClick={() =>
-                  setPicture({
-                    id: marsPic.id,
-                    img_src: marsPic.img_src,
-                    earth_date: marsPic.earth_date,
-                  })
+        <>
+          <ul>
+            {marsPics.photos &&
+              marsPics.photos.slice(0, 16).map((marsPic: any) => (
+                <li
+                  key={marsPic.id}
+                  onClick={() =>
+                    setPicture({
+                      id: marsPic.id,
+                      img_src: marsPic.img_src,
+                      earth_date: marsPic.earth_date,
+                    })
+                  }
+                  title="Voir l'image"
+                  className={`mars-pictures_listItems ${
+                    picture.id === marsPic.id && "-selected"
+                  }`}
+                >
+                  <Image
+                    url={marsPic.img_src}
+                    alt={`image de ${marsPic.earth_date}`}
+                    size="image-s -square"
+                  />
+                </li>
+              ))}
+          </ul>
+          <div>
+            <h2>
+              <Time
+                value={
+                  picture.id
+                    ? picture.earth_date
+                    : marsPics.photos[0].earth_date
                 }
-                title="Voir l'image"
-                className={`mars-pictures_listItems ${
-                  picture.id === marsPic.id && "-selected"
-                }`}
-              >
-                <Image
-                  url={marsPic.img_src}
-                  alt={`image de ${marsPic.earth_date}`}
-                  size="image-s -square"
-                />
-              </li>
-            ))}
-        </ul>
-      )}
-
-      {picture.id ? (
-        <div>
-          <h2>
-            <Time value={picture.earth_date} format="DD/MM/YYYY" />
-          </h2>
-          <Image
-            url={picture.img_src}
-            alt={`image de ${picture.earth_date}`}
-            size="mars-pictures_image"
-          />
-        </div>
-      ) : (
-        <p>plop</p>
+                format="DD/MM/YYYY"
+              />
+            </h2>
+            <Image
+              url={picture.id ? picture.img_src : marsPics.photos[0].img_src}
+              alt={`image du ${
+                picture.id ? picture.earth_date : marsPics.photos[0].earth_date
+              }`}
+              size="mars-pictures_image"
+            />
+          </div>
+        </>
       )}
     </PageWrapper>
   );

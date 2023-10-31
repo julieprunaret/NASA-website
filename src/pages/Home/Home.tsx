@@ -4,7 +4,7 @@ import "./home.scss";
 function Home() {
   return (
     <PageWrapper>
-      <p>Home</p>
+      <p>Bienvenue !</p>
     </PageWrapper>
   );
 }

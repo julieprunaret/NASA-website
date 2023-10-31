@@ -3,6 +3,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 5px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 
   ul {
     display: flex;
@@ -11,6 +15,10 @@
     max-height: 500px;
     width: 150px;
     flex-wrap: wrap;
+    @media (max-width: 600px) {
+      flex-direction: row;
+      width: 100%;
+    }
   }
 }
 
@@ -27,7 +35,10 @@
 }
 
 .mars-pictures_image {
-  max-width: 80%;
-  max-height: 500px;
+  max-width: 500px;
+  max-height: 400px;
   object-fit: cover;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 }

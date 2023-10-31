@@ -4,6 +4,9 @@ export const PageWrapper = styled.div`
   color: white;
   margin: 0 auto;
   width: 80%;
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 `;
 
 const rotate = keyframes`

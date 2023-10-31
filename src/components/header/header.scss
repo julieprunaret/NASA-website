@@ -6,4 +6,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 600px) {
+    margin: 0 auto 20px;
+    max-width: 90%;
+    div {
+      display: flex;
+      flex-direction: column;
+      padding-right: 0;
+    }
+    .button {
+      margin-right: 0;
+    }
+  }
 }

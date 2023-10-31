@@ -15,6 +15,10 @@
     max-width: 500px;
     max-height: 500px;
     object-fit: cover;
+    @media (max-width: 600px) {
+      max-height: 200px;
+      margin: 0 auto;
+    }
   }
   &-bg {
     opacity: 0.8;
