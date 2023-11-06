@@ -2,7 +2,7 @@ import Image from "../../components/image/Image";
 import { useFetch } from "../../utils/hooks/useFetch";
 import { Loader, LoaderWrapper, PageWrapper } from "../../utils/style/Layout";
 import "./marsPictures.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Time from "react-time-format";
 
 function MarsPictures() {
@@ -12,8 +12,8 @@ function MarsPictures() {
     earth_date: "",
   });
 
-  const { data, isLoading, error } = useFetch(
-    `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=vciOjhLYjZK99S51sNTtGgc7RL1sRngwn65IGKUo&feed`
+  const { data, isLoading } = useFetch(
+    `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=`
   );
   const marsPics: any = data;
 

@@ -6,10 +6,10 @@ import Time from "react-time-format";
 
 function ImageOfTheDay() {
   const { data, isLoading, error } = useFetch(
-    `https://api.nasa.gov/planetary/apod?api_key=vciOjhLYjZK99S51sNTtGgc7RL1sRngwn65IGKUo`
+    `https://perenual.com/api/species-list?key=`
   );
   const dayImage: any = data;
-
+  // https://api.nasa.gov/planetary/apod?api_key=vciOjhLYjZK99S51sNTtGgc7RL1sRngwn65IGKUo
   console.log(dayImage);
 
   return (
