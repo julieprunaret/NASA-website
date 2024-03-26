@@ -6,11 +6,14 @@ import Time from "react-time-format";
 
 function ImageOfTheDay() {
   const { data, isLoading, error } = useFetch(
-    `https://perenual.com/api/species-list?key=`
+    `https://api.nasa.gov/planetary/apod?`
   );
-  const dayImage: any = data;
-  // https://api.nasa.gov/planetary/apod?api_key=vciOjhLYjZK99S51sNTtGgc7RL1sRngwn65IGKUo
-  console.log(dayImage);
+  const dayMedia: any = data;
+  console.log(dayMedia);
+
+  if (error) {
+    console.log(error);
+  }
 
   return (
     <PageWrapper>
@@ -21,18 +24,23 @@ function ImageOfTheDay() {
         </LoaderWrapper>
       ) : (
         <div className="image-of-the-day_container">
-          <Image
-            url={dayImage.url}
-            alt={`image de ${dayImage.copyright}`}
-            size="image-l"
-          />
+          {dayMedia.media_type === "video" ? (
+            <iframe
+              width="560"
+              height="315"
+              src={dayMedia.url}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            ></iframe>
+          ) : (
+            <img src={dayMedia.url} alt={dayMedia.title} />
+          )}
           <div>
-            <h2>
-              Image of the day{" "}
-              <Time value={dayImage.date} format="DD/MM/YYYY" /> by{" "}
-              {dayImage.copyright}
-            </h2>
-            <p>{dayImage.explanation}</p>
+            <h2>{dayMedia.title}</h2>
+            <h3>
+              <Time value={dayMedia.date} format="DD/MM/YYYY" />
+            </h3>
+            <p>{dayMedia.explanation}</p>
           </div>
         </div>
       )}

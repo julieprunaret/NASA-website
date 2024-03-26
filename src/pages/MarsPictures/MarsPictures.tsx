@@ -13,7 +13,7 @@ function MarsPictures() {
   });
 
   const { data, isLoading } = useFetch(
-    `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=`
+    `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=100&`
   );
   const marsPics: any = data;
 

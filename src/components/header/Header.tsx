@@ -13,7 +13,7 @@ function Header() {
 
       <div>
         <LinkCustom label="Photos marsiennes" path="/marsian-pictures" />
-        <LinkCustom label="Image du jour" path="/image-of-the-day" />
+        <LinkCustom label="Media du jour" path="/image-of-the-day" />
       </div>
     </header>
   );
